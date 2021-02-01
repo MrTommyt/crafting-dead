@@ -101,10 +101,17 @@ import com.craftingdead.core.entity.grenade.PipeGrenadeEntity;
 import com.craftingdead.core.entity.grenade.SmokeGrenadeEntity;
 import com.craftingdead.core.inventory.CraftingInventorySlotType;
 import com.craftingdead.core.item.AttachmentItem.MultiplierType;
+import com.craftingdead.core.potion.ModEffects;
 import com.craftingdead.core.util.ModSoundEvents;
 import com.craftingdead.core.world.storage.loot.ModLootTables;
+import net.minecraft.item.Food;
+import net.minecraft.item.Foods;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -2405,4 +2412,220 @@ public class ModItems {
   public static final RegistryObject<Item> HEAVY_BOLT = ITEMS
       .register("heavy_bolt",
           () -> new Item(new Item.Properties().group(ModItemGroups.CRAFTING_DEAD_MISC)));
+
+  // ================================================================================
+  // Foods
+  // ================================================================================
+
+  private static final ItemGroup foodItemGroup = ModItemGroups.CRAFTING_DEAD_MISC;
+  public static final RegistryObject<Item> APPLE = ITEMS.register("apple",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.APPLE)));
+
+  public static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.SWEET_BERRIES)));
+
+//  public static final RegistryObject<Item> BOTTLED_WATER = ITEMS.register("bottled_water",)
+
+  public static final RegistryObject<Item> CANDY_BAR = ITEMS.register("candy_bar",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.BAKED_POTATO)));
+
+  public static final RegistryObject<Item> CANNED_BACON = ITEMS.register("canned_bacon",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_PORKCHOP)));
+
+  public static final RegistryObject<Item> CANNED_BEANS = ITEMS.register("canned_beans",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_MUTTON)));
+
+  public static final RegistryObject<Item> CANNED_CORN = ITEMS.register("canned_corn",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_RABBIT)));
+
+  public static final RegistryObject<Item> CANNED_CUSTARD = ITEMS.register("canned_custard",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_COD)));
+
+  public static final RegistryObject<Item> CANNED_DOG_FOOD = ITEMS.register("canned_dog_food",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_SALMON)));
+
+  public static final RegistryObject<Item> CANNED_PASTA = ITEMS.register("canned_pasta",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.MUSHROOM_STEW)));
+
+  public static final RegistryObject<Item> CANNED_PEACH = ITEMS.register("canned_peach",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_CHICKEN)));
+
+  public static final RegistryObject<Item> CANNED_PICKLES = ITEMS.register("canned_pickles",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_RABBIT)));
+
+  public static final RegistryObject<Item> CANNED_TOMATO_SOUP = ITEMS.register("canned_tomato_soup",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.BEETROOT_SOUP)));
+
+  public static final RegistryObject<Item> CEREAL = ITEMS.register("cereal",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.CARROT)));
+
+  public static final RegistryObject<Item> CHEESE_CHIPS = ITEMS.register("cheese_chips",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.CARROT)));
+
+  public static final RegistryObject<Item> CHIPS = ITEMS.register("chips",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.CARROT)));
+
+//  public static final RegistryObject<Item> COFFEE_FLASK = ITEMS.register("coffee_flask",
+//          () -> new Item(new Food.Builder().))
+
+//  public static final RegistryObject<Item> COLA_POP = ITEMS.register("cola_pop")
+
+//  public static final RegistryObject<Item> COLA_SODA = ITEMS.register("cola_soda",)
+
+  public static final RegistryObject<Item> EMERALD_CEREAL = ITEMS.register("emerald_cereal",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_PORKCHOP)));
+
+  public static final RegistryObject<Item> EMPTY_COLA_POP = ITEMS.register("empty_cola_pop",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_COLA_SODA = ITEMS.register("empty_cola_soda",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_FLASK = ITEMS.register("empty_flask",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_ICED_TEA = ITEMS.register("empty_iced_tea",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_IRON_BREW = ITEMS.register("empty_iron_brew",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_JUICE_POUCH = ITEMS.register("empty_juice_pouch",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_LEMON_SODA = ITEMS.register("empty_lemon_soda",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_MILK_CARTON = ITEMS.register("empty_milk_carton",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_ORANGE_SODA = ITEMS.register("empty_orange_soda",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_PEPE_SODA = ITEMS.register("empty_pepe_soda",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_SPRITE = ITEMS.register("empty_sprite",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_WATER_BOTTLE = ITEMS.register("empty_water_bottle",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_WATER_CANTEEN = ITEMS.register("empty_water_canteen",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> EMPTY_ZOMBIE_ENERGY = ITEMS.register("empty_zombie_energy",
+          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+  public static final RegistryObject<Item> FLAKE_CEREAL = ITEMS.register("flake_cereal",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_COD)));
+
+//  public static final RegistryObject<Item> FLASK = ITEMS.register("flask",
+//          () -> new Item(new Item.Properties().group(foodItemGroup)));
+
+//  public static final RegistryObject<Item> ICED_TEA = ITEMS.register("iced_tea")
+
+//  public static final RegistryObject<Item> IRON_BREW = ITEMS.register("iron_brew")
+
+//  public static final RegistryObject<Item> JUICE_POUCH = ITEMS.register("juice_pouch")
+
+//  public static final RegistryObject<Item> LEMON_SODA = ITEMS.register("lemon_soda")
+
+//  public static final RegistryObject<Item> MILK_CARTON = ITEMS.register("milk_carton")
+
+  public static final RegistryObject<Item> NOODLES = ITEMS.register("noodles",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.MUSHROOM_STEW)));
+
+  public static final RegistryObject<Item> NUTTY_CEREAL = ITEMS.register("nutty_cereal",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_COD)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_BACON = ITEMS.register("open_canned_bacon",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_CHICKEN)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_BEANS = ITEMS.register("open_canned_beans",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_COD)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_CORN = ITEMS.register("open_canned_corn",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_SALMON)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_CUSTARD = ITEMS.register("open_canned_custard",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_RABBIT)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_DOG_FOOD = ITEMS.register("open_canned_dog_food",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.MELON_SLICE)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_PASTA = ITEMS.register("open_canned_pasta",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.MUSHROOM_STEW)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_PEACH = ITEMS.register("open_canned_peach",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_MUTTON)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_PICKLES = ITEMS.register("open_canned_pickles",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.CARROT)));
+
+  public static final RegistryObject<Item> OPEN_CANNED_TOMATO_SOUP = ITEMS.register("open_canned_tomato_soup",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.PUMPKIN_PIE)));
+
+  public static final RegistryObject<Item> ORANGE = ITEMS.register("orange",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.APPLE)));
+
+//  public static final RegistryObject<Item> ORANGE_SODA = ITEMS.register("orange_soda",
+//          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.)))
+
+  public static final RegistryObject<Item> PEAR = ITEMS.register("pear",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.APPLE)));
+
+  public static final RegistryObject<Item> POPCORN = ITEMS.register("popcorn",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.BAKED_POTATO)));
+
+  public static final RegistryObject<Item> POWER_BAR = ITEMS.register("power_bar",
+          () -> new Item(new Item.Properties().group(foodItemGroup)
+                  .food(new Food.Builder().saturation(2).hunger(2).setAlwaysEdible().fastToEat().effect(() ->
+                          new EffectInstance(Effects.SPEED, 40, 2), 1f).build())));
+
+  public static final RegistryObject<Item> RANCH_CHIPS = ITEMS.register("ranch_chips",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.BAKED_POTATO)));
+
+  public static final RegistryObject<Item> RASPBERRY = ITEMS.register("raspberry",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.SWEET_BERRIES)));
+
+  public static final RegistryObject<Item> RICE_BAG = ITEMS.register("rice_bag",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.COOKED_COD)));
+
+  public static final RegistryObject<Item> ROTTEN_APPLE = ITEMS.register("rotten_apple",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_BLUEBERRY = ITEMS.register("rotten_blueberry",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_MILK = ITEMS.register("rotten_milk",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_ORANGE = ITEMS.register("rotten_orange",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_PEAR = ITEMS.register("rotten_pear",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_RASPBERRY = ITEMS.register("rotten_raspberry",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> ROTTEN_WATERMELON = ITEMS.register("rotten_watermelon",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.ROTTEN_FLESH)));
+
+  public static final RegistryObject<Item> SALT_CHIPS = ITEMS.register("salt_chips",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.BAKED_POTATO)));
+
+//  public static final RegistryObject<Item> SPRITE =
+
+//  public static final RegistryObject<Item> TEA_FLASK
+
+//  public static final RegistryObject<Item> WATER_CANTEEN = ITEMS.register("water_canteen",
+//          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.)))
+
+  public static final RegistryObject<Item> WATERMELON = ITEMS.register("watermelon",
+          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.MELON_SLICE)));
+
+//  public static final RegistryObject<Item> ZOMBIE_ENERGY = ITEMS.register("zombie_energy",
+//          () -> new Item(new Item.Properties().group(foodItemGroup).food(Foods.)))
 }
